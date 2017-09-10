@@ -1,8 +1,11 @@
 var Product = require('../models/products');
 
 var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 
-mongoose.connect('localhost:27017/shopping');
+mongoose.connect('localhost:27017/shopping' {
+    useMongoClient: true
+});
 
 var products = [
     new Product({
@@ -11,28 +14,24 @@ var products = [
     description: 'Flowers',
     price: 10
 }),
-
 new Product({
     imagePath: 'https://garden.org/pics/2016-10-18/Rebekah/e5f6ad.jpg',
     title: 'Roses',
     description: 'Flowers',
     price: 10
 }),
-
 new Product({
     imagePath: 'https://usercontent2.hubstatic.com/7825535_f520.jpg',
     title: 'Stargazer',
     description: 'Flowers',
     price: 10
 }),
-
 new Product({
     imagePath: 'https://www.plantopedia.com/wp-content/uploads/2017/04/petunia-n9.jpg',
     title: 'Petunia',
     description: 'Flowers',
     price: 10
 }),
-
 new Product({
     imagePath: 'http://www.stephenmorrisauthor.com/wp-content/uploads/2017/03/Daisy.jpg',
     title: 'Daisy',
@@ -42,7 +41,7 @@ new Product({
 ];
 
 var done = 0;
-for (var i = 0; i < products.length; i++){
+for (var i = 0; i < products.length; i++) {
     products(i).save(function(err, result) {
         done++;
         if (done === products.length) {
